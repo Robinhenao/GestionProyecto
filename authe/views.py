@@ -14,7 +14,7 @@ def login_session(request):
             if usuario is  not None:
                 login(request,usuario)
                 messages.success(request,F"Welcome {nombre}" )
-                return redirect("gestiongestion_proyecto")
+                return redirect("gestion_proyecto")
             else:
                 messages.error(request,"Datos incorrectos")
         else:
@@ -41,7 +41,7 @@ class view_Registro(View):
             nombre=form.cleaned_data.get("username")
             messages.success(request,f"registro exitoso {nombre}")
             login(request,usuario)
-            return redirect("gestiongestion_proyecto")
+            return redirect("gestion_proyecto")
         else:
             for msg in form.error_messages:
                 messages.error(request,form.error_messages[msg])
