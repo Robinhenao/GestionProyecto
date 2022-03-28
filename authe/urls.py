@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import login_session,logout_session
+from .views import login_session,logout_session,view_Registro
 
 urlpatterns = [
+    path('registro/', view_Registro.as_view(), name="registro"),
     path('login/', login_session, name="login"),
-    path('logoutsession/', logout_session, name="logoutsession")
+    path('logout/', logout_session, name="logout")
 ]
