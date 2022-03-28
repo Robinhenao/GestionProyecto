@@ -11,44 +11,43 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a class="navbar-brand " href="/">inicio</a>
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Home</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="about.html">About</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="products.html">Products</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Store</a></li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
 
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">hola {{ user.username }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'registro' %}">Registro</a>
-                        </li>
-                    {% endif %}
-                </ul>
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">hola {{ user.username }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
+            
+            
+            
         </nav>
         
-        <div class="container mt-3">
-            {% block header %}{% endblock %}
-        </div>
-
         <div class="container mt-3">
             {% if messages %}
                 <div class="row mt-3 mb-3">
@@ -61,6 +60,7 @@
                     </div>
                 </div>
             {% endif %}
+            
             {% block content %}{% endblock %}
 
         </div>
