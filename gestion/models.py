@@ -1,65 +1,63 @@
-from pickle import TRUE
-from tabnanny import verbose
 from django.db import models
+from django.db.models.base import Model
 
-# Create your models here.
 
-class Proyectos(models.Model):
+
+class Proyecto(models.Model):
     estados = (('F','Finalizado'),('P','En ejecucion'))
-    nombre = models.CharField()
-    objetivo_general = models.CharField()
+    nombre = models.CharField(max_length=100)
+    objetivo_general = models.CharField(max_length=100)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
-    director = models.CharField()
-    presupuesto = models.CharField()
+    director = models.CharField(max_length=100)
+    presupuesto = models.CharField(max_length=100)
     porcentaje_avance = models.IntegerField()
     estado = models.CharField(max_length=1, choices=estados)
 
-    def __str__(self) -> str:
-        return super().__str__()
+    def __str__(self):
+        return self.nombre
 
-    class Meta:
-        db_table= 'proyectos'
+    class meta:
+        db_table= 'proyecto'
         verbose_name= 'Proyecto'
         verbose_name_plural='Proyectos'
-        ordering=['-id']
-   
-    
+        ordering=['id']
+  
 
-     
-
-class Estudiantes(models.Model):
-    nombre = models.CharField()
-    apellido = models.CharField()
+class Estudiante(models.Model):
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     numero_id = models.IntegerField(primary_key=True)
     telefono = models.CharField(max_length=12)
-    carrera = models.CharField()
+    carrera = models.CharField(max_length=100)
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
     fecha_ingreso = models.DateField()
 
     def __str__(self) -> str:
         return super().__str__()
     
-    class Meta:
-        db_table= 'estudiantes'
+    class meta:
+        db_table= 'estudiante'
         verbose_name= 'Estudiante'
         verbose_name_plural='Estudiantes'
-        ordering=['-id']
+        ordering=['id']
    
     
     
 class Objetivos_espesificos(models.Model):
     Proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
-    contenido = models.CharField()
-
-    class Meta:
-        db_table= 'objetivos_espesificos'
-        verbose_name= 'Objetivo espesifico'
-        verbose_name_plural='Objetivos espesificos'
-        ordering=['-id']
+    contenido = models.CharField(max_length=100)
 
     def __str__(self) -> str:
         return super().__str__()
+
+    class meta:
+        db_table= 'objetivos_espesificos'
+        verbose_name= 'Objetivo espesifico'
+        verbose_name_plural='Objetivos espesificos'
+        ordering=['id']
+
+    
 
     
 
