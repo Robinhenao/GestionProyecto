@@ -14,7 +14,7 @@ class FormProyecto(forms.ModelForm):
         model = Proyecto
         fields = ('nombre','objetivo_general','fecha_inicio','fecha_fin','director','presupuesto')
 
-class FromObjetivosEspecificos(forms.ModelForm):
+class FormObjetivosEspecificos(forms.ModelForm):
     class Meta:
         model = Objetivos_especificos
         fields = ('contenido','proyecto') 
