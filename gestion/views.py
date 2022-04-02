@@ -4,7 +4,7 @@ from gestion.forms import FormStudent
 from gestion.forms import FormProyecto
 from gestion.forms import FormObjetivosEspecificos
 from gestion.forms import FormProyecto, FormStudent
-from gestion.models import Objetivos_especificos, Proyecto
+from gestion.models import Estudiante, Objetivos_especificos, Proyecto
 from django.core.paginator import Paginator
 from django.contrib import messages
 
@@ -21,7 +21,8 @@ def gestion(request):
 
 
 def manage_students(request):
-    return render(request, "manage_students.html")
+    students = Estudiante.objects.filter(proyecto = 1)
+    return render(request, "manage_students.html",{"students":students})
 
 def make_student(request):
     if request.method == "POST":
