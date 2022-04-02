@@ -1,6 +1,7 @@
+from distutils.debug import DEBUG
 import os
 from pathlib import Path
-
+from decouple import config 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,8 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = 'django-insecure-66g)dn0pb9=vpnb47odnb^t)v6=!w+k_z9p7t&m#a0azq=x)r_'
-DEBUG = True
+SECRET_KEY = config('SECRET_KEY')
+DEBUG=config('DEBUG')
 
 ALLOWED_HOSTS = []
 
