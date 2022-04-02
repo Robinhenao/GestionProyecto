@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #C2E8C1;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
@@ -23,33 +23,53 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav ">
                     {% if user.is_authenticated %}
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" href="{% url 'gestion_proyecto' %}">Gestion proyectos</a>
+                        <a class="nav-link text-uppercase border border-success" href="{% url 'gestion_proyecto' %}">Gestion proyectos</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" href="{% url 'manage_students'%}">Administrar estudiantes</a>
+                        <a class="nav-link text-uppercase border border-success" href="{% url 'manage_students'%}">Administrar estudiantes</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" href="{% url 'make_project' %}">make project</a>
+                        <a class="nav-link text-uppercase border border-success" href="{% url 'make_project' %}">make project</a>
                     </li>
                     {% endif %}
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav ml-auto ">
                     {% if user.is_authenticated %}
-                        <li>
-                            <a class="nav-item nav-link" href="">hola {{ user.username }}</a>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"  width="50" height="50" class="rounded-circle">
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ajustes
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}" >
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesion
+                                </a>
+                            </div>
                         </li>
-                        <li>
-                            <a class="nav-item nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
-                        </li>
+                       
                     {% else %}
                         <li>
-                            <a class="nav-item nav-link" href="{% url 'login' %}"></span>Ingresar</a>
+                            <a class="nav-item nav-link border border-success" href="{% url 'login' %}">Ingresar</a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" href="{% url 'registro' %}"></span> Registrarse</a>
+                            <a class="nav-item nav-link border border-warning ml-2" href="{% url 'registro' %}">Registrarse</a>
                         </li>
                     {% endif %}
                 </ul>
