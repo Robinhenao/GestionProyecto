@@ -9,7 +9,7 @@ from django.contrib import messages
 @login_required(login_url='login')
 def gestion(request):
     listado_posts =Proyecto.objects.all()
-    paginator = Paginator(listado_posts, 3)
+    paginator = Paginator(listado_posts, 6)
     pagina = request.GET.get("page") or 1
     posts = paginator.get_page(pagina)
     pagina_actual = int(pagina)

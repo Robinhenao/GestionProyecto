@@ -42,12 +42,13 @@
                 <div class="card-body" >
                     <h5 class="card-title">{{project.nombre }}</h5>
                     <hr/>
-                    <h6 class="card-subtitle">Autor:  </h6>
-                    <p class="card-text">Categoria: </p>
+                    <h6 class="card-subtitle">Avance:{{project.porcentaje_avance }}</h6>
+                    <p class="card-text">Estado: {{project.estado }}</p>
                 </div>
                 </a>
                 <div class="card-footer">
-
+                  <p class="card-text">Director: {{project.director }}</p>
+                  <p class="card-text">Objetivo: {{project.objetivo_general }}</p>
                 </div>
             </div>
         </div>

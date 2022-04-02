@@ -8,16 +8,18 @@
 
     {% load bootstrap4 %}
     {% bootstrap_css %}
+    {%load static%}
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <div class="container">
-            <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/">Inicio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img class="img-responsive" src="{% static 'img/logo-udea.png'%}" alt="" height="110">
+                </a>
+            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     {% if user.is_authenticated %}
@@ -32,24 +34,13 @@
                     </li>
                     {% endif %}
                 </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="">hola {{ user.username }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                        <a class="nav-item nav-link" href="">hola {{ user.username }}</a>
+                        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Cerrar sesion</a></li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'registro' %}">Registro</a>
-                    </li>
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Ingresar</a></li>
+                        <li><a href="{% url 'registro' %}"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
                     {% endif %}
                 </ul>
             </div>
