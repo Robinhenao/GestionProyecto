@@ -44,17 +44,17 @@ class Estudiante(models.Model):
    
     
     
-class Objetivos_espesificos(models.Model):
-    Proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+class Objetivos_especificos(models.Model):
+    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
     contenido = models.CharField(max_length=100)
 
     def __str__(self) -> str:
         return super().__str__()
 
     class meta:
-        db_table= 'objetivos_espesificos'
-        verbose_name= 'Objetivo espesifico'
-        verbose_name_plural='Objetivos espesificos'
+        db_table= 'objetivos_especificos'
+        verbose_name= 'Objetivo especifico'
+        verbose_name_plural='Objetivos especificos'
         ordering=['id']
 
     

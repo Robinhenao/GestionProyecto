@@ -38,7 +38,7 @@
         {% if forloop.first %}<div class="row">{% endif %}
         <div class="col-4">
             <div class="card" >
-                <a href="">
+                <a href="{%url 'admin_project' project.id%}">
                 <div class="card-body" >
                     <h5 class="card-title">{{project.nombre }}</h5>
                     <hr/>
