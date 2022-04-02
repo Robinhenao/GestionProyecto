@@ -31,8 +31,20 @@ def make_student(request):
     form=FormStudent()           
     return render(request, "make_student.html",{"form": form})
 
+
+
+
 def admin_project(request):
     return render(request, "admin_project.html")
 
 def make_project(request):
-    return render(request, "make_projet.html")
+    if request.method == "POST":
+        form=FormProyecto(request.POST,request.FILES)
+        if form.is_valid():
+            proyecto= form.save(commit=False)
+            proyecto.save()
+        else:
+            for msg in form.error_message:
+                messages.error(request, form.error_messages[msg])
+    form=FormProyecto()           
+    return render(request, "make_projet.html",{"form": form})
