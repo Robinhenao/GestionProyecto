@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from gestion.forms import FormProyecto, FormStudent
-from gestion.models import Proyecto
+from gestion.models import Objetivos_especificos, Proyecto
 from django.core.paginator import Paginator
 from django.contrib import messages
 
@@ -35,7 +35,9 @@ def make_student(request):
 
 
 def admin_project(request):
-    return render(request, "admin_project.html")
+    project = Proyecto.objects.get(id = 2)
+    targets = Objetivos_especificos.objects.filter(proyecto = 2)
+    return render(request, "admin_project.html", {"project":project, "targets":targets})
 
 def make_project(request):
     if request.method == "POST":

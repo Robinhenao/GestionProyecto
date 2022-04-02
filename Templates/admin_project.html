@@ -4,5 +4,16 @@
 
 
 {% block content %}
-   
+<p>Nombre: {{ project.nombre }}</p>
+<p>Objetivo general: {{ project.objetivo_general}}</p>
+<p>Fecha inicio: {{ project.fecha_inicio}}</p>
+<p>Fecha Fin: {{ project.fecha_fin }}</p>
+<p>Director del proyecto: {{ project.director }}</p>
+<p>Presupuesto: {{project.presupuesto}}</p>
+<p>Estado del proyecto: {{ project.Estado }}</p>
+<ul>
+    {% for target in targets %}
+        <li>{{target.contenido}}</li>
+    {% endfor %}
+</ul>   
 {% endblock %}
