@@ -22,6 +22,9 @@
         <tbody>
             {% for student in students %}
                 <tr class="text-center">
+                    <td class="action-checkbox">
+                        <input type="checkbox" name="_selected_action" value="61616" class="action-select">
+                    </td>
                     <td>{{ student.numero_id }}</td>
                     <td>{{ student.nombre }}</td>
                     <td>{{ student.apellido }}</td>

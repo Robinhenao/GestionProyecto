@@ -16,16 +16,38 @@
 {%endblock%}
 
 {% block content %}
-<p>Nombre: {{ project.nombre }}</p>
-<p>Objetivo general: {{ project.objetivo_general}}</p>
-<p>Fecha inicio: {{ project.fecha_inicio}}</p>
-<p>Fecha Fin: {{ project.fecha_fin }}</p>
-<p>Director del proyecto: {{ project.director }}</p>
-<p>Presupuesto: {{project.presupuesto}}</p>
-<p>Estado del proyecto: {{ project.Estado }}</p>
-<ul>
-    {% for target in targets %}
-        <li>{{target.contenido}}</li>
-    {% endfor %}
-</ul>   
+<div class="container">
+    <div class="card">
+        <div class="card-header"><b>Proyecto: </b> {{ project.nombre }}</div>
+        <div class="card-body">
+            <p><b>Objetivo general:</b> {{ project.objetivo_general}}</p>
+            <p><b>Fecha inicio: </b> {{ project.fecha_inicio}}</p>
+            <p><b>Fecha Fin:</b> {{ project.fecha_fin }}</p>
+            <p><b>Director del proyecto:</b> {{ project.director }}</p>
+            <p><b>Presupuesto:</b> {{project.presupuesto}}</p>
+            <p><b>Estado del proyecto:</b> {{ project.Estado }}</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header"><b>Objetivos específicos</b></div>
+        <div class="card-body">
+            {% if targets %}
+            {% for target in targets %}
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>{{target.contenido}}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    
+
+    
+</div>
+    
 {% endblock %}
