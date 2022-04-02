@@ -2,6 +2,18 @@
 
 {% block title %}Administrar proyecto{% endblock %}
 
+{%block navlink%}
+<li class="nav-item px-lg-4">
+    <a class="nav-link text-uppercase border border-success" href="">Administrar proyecto</a>
+</li>
+<li class="nav-item px-lg-4">
+    <a class="nav-link text-uppercase border border-success" href="{% url 'manage_students'%}">Administrar estudiantes</a>
+</li>
+<li class="nav-item px-lg-4">
+    <a class="nav-link text-uppercase border border-success" href="">Actualizar proyecto</a>
+</li>
+
+{%endblock%}
 
 {% block content %}
 <p>Nombre: {{ project.nombre }}</p>

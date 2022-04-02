@@ -1,7 +1,11 @@
 {% extends 'index.html' %}
 
 {% block title %}Gestion Proyecto{% endblock %}
-
+{%block navlink%}
+<li class="nav-item px-lg-4">
+  <a class="nav-link text-uppercase border border-success" href="{% url 'make_project' %}">Crear proyecto</a>
+</li>
+{%endblock%}
 
 {% block content %}
 <div class="bd-masthead mb-3" id="content">

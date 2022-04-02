@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #C2E8C1;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'gestion_proyecto' %}">
                     <img class="img-responsive" src="{% static 'img/logo-udea.png'%}" alt="" height="110">
                 </a>
             </div>
@@ -28,12 +28,7 @@
                     <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase border border-success" href="{% url 'gestion_proyecto' %}">Gestion proyectos</a>
                     </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase border border-success" href="{% url 'manage_students'%}">Administrar estudiantes</a>
-                    </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase border border-success" href="{% url 'make_project' %}">make project</a>
-                    </li>
+                    {% block navlink %}{% endblock %}
                     {% endif %}
                 </ul>
                 <ul class="nav navbar-nav ml-auto ">
