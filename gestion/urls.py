@@ -8,4 +8,5 @@ urlpatterns = [
    path('manage_project/admin_project', admin_project, name="admin_project"),
    path('manage_project/make_project', make_project, name="make_project"),
    
+   
 ]

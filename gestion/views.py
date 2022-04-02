@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from gestion.forms import FormStudent
+from gestion.forms import FormProyecto, FormStudent
 from gestion.models import Proyecto
 from django.core.paginator import Paginator
 from django.contrib import messages
