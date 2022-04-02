@@ -4,6 +4,12 @@
 
 {% load crispy_forms_tags %}
 
+{%block navlink%}
+<li class="nav-item px-lg-4">
+  <a class="nav-link text-uppercase border border-success" href="{% url 'make_project' %}">Crear proyecto</a>
+</li>
+{%endblock%}
+
 {% block content %}
 <form method="POST" action="" class="mt-3" autocomplete="off" enctype="multipart/form-data">
     {% csrf_token %}
