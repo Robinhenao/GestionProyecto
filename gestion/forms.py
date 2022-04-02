@@ -11,4 +11,4 @@ class FormStudent(forms.ModelForm):
 class FormProyecto(forms.ModelForm):
     class Meta:
         model = Proyecto
-        fields = ('estado','nombre','objetivo_general','fecha_inicio','fecha_fin','director','presupuesto','porcentaje_avance','estado')
+        fields = ('nombre','objetivo_general','fecha_inicio','fecha_fin','director','presupuesto','porcentaje_avance','estado')

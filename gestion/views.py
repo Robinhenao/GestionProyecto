@@ -47,4 +47,4 @@ def make_project(request):
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
     form=FormProyecto()           
-    return render(request, "make_projet.html",{"form": form})
+    return render(request,"make_project.html",{"form": form})
