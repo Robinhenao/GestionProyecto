@@ -11,7 +11,7 @@ class Proyecto(models.Model):
     fecha_fin = models.DateField()
     director = models.CharField(max_length=100)
     presupuesto = models.CharField(max_length=100)
-    porcentaje_avance = models.IntegerField()
+    porcentaje_avance = models.IntegerField(null = True)
     estado = models.CharField(max_length=1, choices=estados)
 
     def __str__(self):
