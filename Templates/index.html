@@ -20,12 +20,12 @@
                     <img class="img-responsive" src="{% static 'img/logo-udea.png'%}" alt="" height="110">
                 </a>
             </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto ">
                     {% if user.is_authenticated %}
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase border border-success" href="{% url 'gestion_proyecto' %}">Gestion proyectos</a>
-                    </li>
                     {% block navlink %}{% endblock %}
                     {% endif %}
                 </ul>
