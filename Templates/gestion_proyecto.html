@@ -43,7 +43,7 @@
     {% for project in projects  %}
         {% if forloop.first %}<div class="row">{% endif %}
         <div class="col-4">
-            <div class="card" >
+            <div class="card h-100" >
               <img class="card-img-top" src="{% static 'img/banner.jpg'%}" alt="Card image cap">
               <div class="card-body" >
                 <h5 class="card-title">{{project.nombre }}</h5>
