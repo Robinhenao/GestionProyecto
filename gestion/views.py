@@ -54,7 +54,7 @@ def make_project(request):
     form=FormProyecto()           
     return render(request, "make_project.html",{"form": form})
 
-def make_objective(request):
+def make_objective(request, project_id):
     if request.method == "POST":
         form=FormObjetivosEspecificos(request.POST,request.FILES)
         if form.is_valid():
@@ -63,5 +63,6 @@ def make_objective(request):
         else:
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
-    form=FormObjetivosEspecificos()           
-    return render(request, "make_objective.hmtl",{"form": form})
+    form=FormObjetivosEspecificos() 
+    targets = Objetivos_especificos.objects.filter(proyecto = id)          
+    return render(request, "make_objective.html",{"form": form, 'targets':targets})
