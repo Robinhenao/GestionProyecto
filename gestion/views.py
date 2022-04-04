@@ -21,22 +21,20 @@ def gestion(request):
     paginas = range(1, posts.paginator.num_pages + 1)
     return render(request, "gestion_proyecto.html",{"projects":posts,"paginas": paginas, "pagina_actual": pagina_actual })
 
-
-def manage_students(request):
-    students = Estudiante.objects.filter(proyecto = 1)
-    return render(request, "manage_students.html",{"students":students})
-
-def make_student(request):
+def manage_students(request, project_id):
     if request.method == "POST":
+        idid = Proyecto.objects.get(pk=project_id)
         form=FormStudent(request.POST,request.FILES)
         if form.is_valid():
             estudiante= form.save(commit=False)
+            estudiante.proyecto=idid
             estudiante.save()
         else:
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
-    form=FormStudent()           
-    return render(request, "make_student.html",{"form": form})
+    form=FormStudent() 
+    students = Estudiante.objects.filter(proyecto = project_id)
+    return render(request, "manage_students.html", {"form": form,"students":students,'project_id':project_id})
 
 
 def admin_project(request,project_id):
@@ -71,6 +69,7 @@ def make_objective(request, project_id):
                 messages.error(request, form.error_messages[msg])
    
     form=FormObjetivosEspecificos() 
+
     targets = Objetivos_especificos.objects.filter(proyecto = project_id)
     return render(request, "make_objective.html",{"form": form ,'targets':targets})
 
@@ -87,3 +86,18 @@ def delete_objetivo(request,objetive_id):
     objetivos_especificos.delete()
     print(id_proyecto)
     return redirect("make_objective",id_proyecto)
+
+
+def delete_student(request, numero_id):
+    pass
+    try:
+        estudiante = Estudiante.objects.get(pk= numero_id)
+        
+    except Objetivos_especificos.DoesNotExist:
+        messages.error(request, "el post a eliminar no existe")
+
+    id_proyecto = estudiante.proyecto.id
+    estudiante.delete()
+    
+    return redirect("manage_students",id_proyecto)
+

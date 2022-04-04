@@ -29,8 +29,8 @@
                     <td>{{ target.proyecto.id}}</td>
                     <td>{{ target.contenido }}</td>
                     <td>{{ target.estado }}</td>
-                    <td><a style="font-size: 0.8em; padding: 0%;color: red;text-decoration: none;" class="link"
-                        href="{%url 'delete_objective' target.id %}"  >Eliminar</a></td>
+                    <td><a class="link btn btn-sm btn-block btn-danger"
+                        href="{%url 'delete_objective' target.id %}"><i class="fa-regular fa-trash-can"></i> Eliminar</a></td>
                 </tr>
             {% endfor %}
         </tbody>
