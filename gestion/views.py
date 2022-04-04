@@ -101,3 +101,22 @@ def delete_student(request, numero_id):
     
     return redirect("manage_students",id_proyecto)
 
+def update_project(request,project_id):
+    project = Proyecto.objects.get(id = project_id)
+    if request.method == "POST":
+        form=FormProyecto(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_project', project_id)
+            
+        else:
+            for msg in form.error_message:
+                messages.error(request, form.error_messages[msg])
+
+    project = Proyecto.objects.get(id =project_id)
+    form=FormProyecto(instance=project)
+    targets = Objetivos_especificos.objects.filter(proyecto = project_id)
+    return render(request, "update_project.html", {"project":project, "targets":targets, "form":form})
+
+
+
