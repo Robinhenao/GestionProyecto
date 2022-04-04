@@ -7,7 +7,7 @@ from .models import Objetivos_especificos
 class FormStudent(forms.ModelForm):
     class Meta:
         model = Estudiante
-        fields = ('nombre','apellido','numero_id','telefono','carrera','proyecto','fecha_ingreso')
+        fields = ('nombre','apellido','numero_id','telefono','carrera','fecha_ingreso')
 
 class FormProyecto(forms.ModelForm):
     class Meta:
