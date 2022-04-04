@@ -45,7 +45,7 @@ class Estudiante(models.Model):
     
     
 class Objetivos_especificos(models.Model):
-    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+    proyecto = models.ForeignKey(Proyecto,on_delete=models.CASCADE,null=True)
     contenido = models.CharField(max_length=100)
     estado = models.BooleanField(null=True,verbose_name="Efectuado")
 

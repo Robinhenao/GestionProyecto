@@ -59,9 +59,11 @@ def make_project(request):
 
 def make_objective(request, project_id):
     if request.method == "POST":
+        idid = Proyecto.objects.get(pk=project_id)
         form=FormObjetivosEspecificos(request.POST,request.FILES)
         if form.is_valid():
             objetivos_especificos= form.save(commit=False)
+            objetivos_especificos.proyecto=idid
             objetivos_especificos.save()
         else:
             for msg in form.error_message:
