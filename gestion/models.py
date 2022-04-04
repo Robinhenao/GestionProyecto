@@ -4,7 +4,7 @@ from django.db.models.base import Model
 
 
 class Proyecto(models.Model):
-    estados = (('F','Finalizado'),('P','En ejecucion'))
+    estados = (('F','Finalizado'),('E','En ejecucion'))
     nombre = models.CharField(max_length=100)
     objetivo_general = models.CharField(max_length=100)
     fecha_inicio = models.DateField()
@@ -47,6 +47,7 @@ class Estudiante(models.Model):
 class Objetivos_especificos(models.Model):
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
     contenido = models.CharField(max_length=100)
+    estado = models.BooleanField(null=True,verbose_name="Efectuado")
 
     def __str__(self) -> str:
         return super().__str__()
