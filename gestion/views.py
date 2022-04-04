@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from gestion.forms import FormStudent
 from gestion.forms import FormProyecto
@@ -10,6 +10,8 @@ from django.contrib import messages
 
 
 @login_required(login_url='login')
+
+
 def gestion(request):
     listado_posts =Proyecto.objects.all()
     paginator = Paginator(listado_posts, 6)
@@ -48,6 +50,7 @@ def make_project(request):
         if form.is_valid():
             proyecto= form.save(commit=False)
             proyecto.save()
+            return redirect("make_objective",proyecto.id)
         else:
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
@@ -64,5 +67,5 @@ def make_objective(request, project_id):
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
     form=FormObjetivosEspecificos() 
-    targets = Objetivos_especificos.objects.filter(proyecto = id)          
+    targets = Objetivos_especificos.objects.filter(proyecto = project_id)          
     return render(request, "make_objective.html",{"form": form, 'targets':targets})

@@ -7,7 +7,7 @@ urlpatterns = [
    path('manage_project/make_student', make_student, name="make_student"),
    path('manage_project/admin_project/<int:project_id>', admin_project, name="admin_project"),
    path('manage_project/make_project', make_project, name="make_project"),
-   path('manage_project/make_objective/', make_objective, name="make_objective"),
+   path('manage_project/make_project/make_objective/<int:project_id>', make_objective, name="make_objective"),
    
    
 ]
