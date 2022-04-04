@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import gestion, make_objective,manage_students,make_student,make_project,admin_project
+from .views import delete_objetivo, gestion, make_objective,manage_students,make_student,make_project,admin_project
 
 urlpatterns = [
    path('', gestion, name="gestion_proyecto"),
@@ -8,6 +8,6 @@ urlpatterns = [
    path('manage_project/admin_project/<int:project_id>', admin_project, name="admin_project"),
    path('manage_project/make_project', make_project, name="make_project"),
    path('manage_project/make_project/make_objective/<int:project_id>', make_objective, name="make_objective"),
-
+   path('manage_project/make_project/make_objective/delete_objetivo/<int:objetive_id>',delete_objetivo, name="delete_objective"),
    
 ]

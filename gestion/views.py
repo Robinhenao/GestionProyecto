@@ -59,15 +59,31 @@ def make_project(request):
 
 def make_objective(request, project_id):
     if request.method == "POST":
-        idid = Proyecto.objects.get(pk=project_id)
+        id_proyecto = Proyecto.objects.get(pk=project_id)
         form=FormObjetivosEspecificos(request.POST,request.FILES)
         if form.is_valid():
             objetivos_especificos= form.save(commit=False)
-            objetivos_especificos.proyecto=idid
+            objetivos_especificos.proyecto=id_proyecto
             objetivos_especificos.save()
+             
         else:
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
+   
     form=FormObjetivosEspecificos() 
-    targets = Objetivos_especificos.objects.filter(proyecto = project_id)          
-    return render(request, "make_objective.html",{"form": form, 'targets':targets})
+    targets = Objetivos_especificos.objects.filter(proyecto = project_id)
+    return render(request, "make_objective.html",{"form": form ,'targets':targets})
+
+def delete_objetivo(request,objetive_id):
+    try:
+        objetivos_especificos = Objetivos_especificos.objects.get(pk=objetive_id)
+        
+    except Objetivos_especificos.DoesNotExist:
+        messages.error(request, "el post a eliminar no existe")
+
+
+    id_proyecto =objetivos_especificos.proyecto.id
+    
+    objetivos_especificos.delete()
+    print(id_proyecto)
+    return redirect("make_objective",id_proyecto)
