@@ -22,21 +22,38 @@ def gestion(request):
     return render(request, "gestion_proyecto.html",{"projects":posts,"paginas": paginas, "pagina_actual": pagina_actual })
 
 
-def manage_students(request):
-    students = Estudiante.objects.filter(proyecto = 1)
-    return render(request, "manage_students.html",{"students":students})
-
-def make_student(request):
+"""def manage_students(request,project_id):
+    students = Estudiante.objects.filter(proyecto = project_id)
+    return render(request, "manage_students.html",{"students":students,'project_id':project_id})
+"""
+def make_student(request, project_id):
     if request.method == "POST":
+        idid = Proyecto.objects.get(pk=project_id)
         form=FormStudent(request.POST,request.FILES)
         if form.is_valid():
             estudiante= form.save(commit=False)
+            estudiante.proyecto=idid
             estudiante.save()
         else:
             for msg in form.error_message:
                 messages.error(request, form.error_messages[msg])
-    form=FormStudent()           
+    form=FormStudent()          
     return render(request, "make_student.html",{"form": form})
+
+def manage_students(request, project_id):
+    if request.method == "POST":
+        idid = Proyecto.objects.get(pk=project_id)
+        form=FormStudent(request.POST,request.FILES)
+        if form.is_valid():
+            estudiante= form.save(commit=False)
+            estudiante.proyecto=idid
+            estudiante.save()
+        else:
+            for msg in form.error_message:
+                messages.error(request, form.error_messages[msg])
+    form=FormStudent() 
+    students = Estudiante.objects.filter(proyecto = project_id)
+    return render(request, "manage_students.html", {"form": form,"students":students,'project_id':project_id})
 
 
 def admin_project(request,project_id):
@@ -71,3 +88,6 @@ def make_objective(request, project_id):
     form=FormObjetivosEspecificos() 
     targets = Objetivos_especificos.objects.filter(proyecto = project_id)          
     return render(request, "make_objective.html",{"form": form, 'targets':targets})
+
+def delate_studen(request, numero_id):
+    pass
