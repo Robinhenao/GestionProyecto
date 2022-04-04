@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models.base import Model
 
 
-
 class Proyecto(models.Model):
     estados = (('F','Finalizado'),('E','En ejecucion'))
     nombre = models.CharField(max_length=100)
