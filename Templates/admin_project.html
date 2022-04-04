@@ -20,33 +20,50 @@
 
 {% block content %}
 <div class="container">
+
     <div class="card">
-        <div class="card-header"><b>Proyecto: </b> {{ project.nombre }}</div>
         <div class="card-body">
-            <p><b>Objetivo general:</b> {{ project.objetivo_general}}</p>
-            <p><b>Fecha inicio: </b> {{ project.fecha_inicio}}</p>
-            <p><b>Fecha Fin:</b> {{ project.fecha_fin }}</p>
-            <p><b>Director del proyecto:</b> {{ project.director }}</p>
-            <p><b>Presupuesto:</b> {{project.presupuesto}}</p>
-            <p><b>Estado del proyecto:</b> {{ project.Estado }}</p>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link" href="{% url 'admin_project' project.id %}" aria-selected="true" role="tab">Proyecto</a>
+                    <a class="nav-item nav-link" href="#">Actualizar</a>
+                </div>
+            </nav>
+            <div class="tab-content">
+                <div class="card">
+                    <div class="card-body">
+                        <p><b>Objetivo general:</b> {{ project.objetivo_general}}</p>
+                        <p><b>Fecha inicio: </b> {{ project.fecha_inicio}}</p>
+                        <p><b>Fecha Fin:</b> {{ project.fecha_fin }}</p>
+                        <p><b>Director del proyecto:</b> {{ project.director }}</p>
+                        <p><b>Presupuesto:</b> {{project.presupuesto}}</p>
+                        <p><b>Estado del proyecto:</b> {{ project.Estado }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <p></p>
     <div class="card">
         <div class="card-header"><b>Objetivos específicos</b></div>
         <div class="card-body">
-            {% if targets %}
-            {% for target in targets %}
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>{{target.contenido}}</p>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
-            {% endfor %}
-            {% endif %}
+            <table class="table table-striped table-bordered" id="mydatatable">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Contenido</th>
+                        <th scope="col">Efectuado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for target in targets %}
+                    <tr class="text-center">   
+                        <td>{{ target.contenido }}</td>
+                        <td>{{ target.estado }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
         </div>
     </div>
     

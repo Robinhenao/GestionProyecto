@@ -101,3 +101,5 @@ def delete_student(request, numero_id):
     
     return redirect("manage_students",id_proyecto)
 
+
+
