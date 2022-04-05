@@ -11,8 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = config('SECRET_KEY')
-DEBUG=config('DEBUG')
+SECRET_KEY = 'django-insecure-66g)dn0pb9=vpnb47odnb^t)v6=!w+k_z9p7t&m#a0azq=x)r_'
+DEBUG=True
 
 ALLOWED_HOSTS = []
 
@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
