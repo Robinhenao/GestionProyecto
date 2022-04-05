@@ -1,1 +1,1 @@
-web:gunicorn GestionProyecto.wsgi
+web: gunicorn GestionProyecto.wsgi
