@@ -22,7 +22,7 @@
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" href="{% url 'admin_project' project.id %}">Proyecto</a>
-                    <a class="nav-item nav-link" href="{% url 'update_project' project.id %}">Actualizar</a>
+                    <a class="nav-item nav-link" href="{% url 'update_project' project.id %}">Actualizar datos</a>
                 </div>
             </nav>
             <div class="tab-content">
@@ -33,7 +33,8 @@
                         <p><b>Fecha Fin:</b> {{ project.fecha_fin }}</p>
                         <p><b>Director del proyecto:</b> {{ project.director }}</p>
                         <p><b>Presupuesto:</b> {{project.presupuesto}}</p>
-                        <p><b>Estado del proyecto:</b> {{ project.Estado }}</p>
+                        <p><b>Porcentaje avanzado: </b> {{project.porcentaje_avance}}%</p>
+                        <p><b>Estado del proyecto:</b> {{ project.estado }}</p>
                     </div>
                 </div>
             </div>
@@ -48,6 +49,7 @@
                     <tr class="text-center">
                         <th scope="col">Contenido</th>
                         <th scope="col">Efectuado</th>
+                        <th scope="col">Cambiar estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +57,12 @@
                     <tr class="text-center">   
                         <td>{{ target.contenido }}</td>
                         <td>{{ target.estado }}</td>
+                        <td>
+                            <a class="link btn btn-sm btn-block btn-info" href="{% url 'update_status' target.id %}"><i class="fa-solid fa-pencil"></i> Efectuado</a>
+                        </td>
+                        <td>
+                            <a class="link btn btn-sm btn-block btn-info" href="{% url 'update_objetive' target.id %}"><i class="fa-solid fa-pencil"></i> Modificar</a>
+                        </td>
                     </tr>
                 {% endfor %}
 

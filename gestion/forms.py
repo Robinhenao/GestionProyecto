@@ -16,7 +16,7 @@ class FormStudent(forms.ModelForm):
 class FormProyecto(forms.ModelForm):
     class Meta:
         model = Proyecto
-        fields = ('nombre','objetivo_general','fecha_inicio','fecha_fin','presupuesto')
+        fields = ('nombre','objetivo_general','fecha_inicio','fecha_fin','presupuesto','estado')
         widgets={'fecha_inicio':DatePickerInput(),'fecha_fin':DatePickerInput(),}
 
 class FormObjetivosEspecificos(forms.ModelForm):

@@ -29,14 +29,14 @@
                     <td>{{ target.proyecto.id}}</td>
                     <td>{{ target.contenido }}</td>
                     <td>{{ target.estado }}</td>
-                    <td><a class="link btn btn-sm btn-block btn-danger"
-                        href="{%url 'delete_objective' target.id %}"><i class="fa-regular fa-trash-can"></i> Eliminar</a></td>
+                    <td><a class="link btn btn-sm btn-block btn-danger" href="{%url 'delete_objective' target.id %}"><i class="fa-regular fa-trash-can"></i> Eliminar</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
 
     </table>
-    <button type="submit" href="{% url 'gestion_proyecto' %}" class="btn btn-success"><i class="fa-regular fa-floppy-disk"></i> Finalizar</button>
+    <a href="{%url 'admin_project' project_id%}" class="btn btn-primary"><i class="fa-regular fa-floppy-disk"></i> Finalizar</a>
 </div>
     
 {% endblock %}

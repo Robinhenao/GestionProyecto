@@ -55,6 +55,13 @@
                     <tr class="text-center">   
                         <td>{{ target.contenido }}</td>
                         <td>{{ target.estado }}</td>
+                        <td>
+                            <a class="link btn btn-sm btn-block btn-info"
+                            href="{% url 'update_status' target.id %}"><i class="fa-solid fa-pencil"></i> Marcar como Efectuado</a>
+                        </td>
+                        <td>
+                            <a class="link btn btn-sm btn-block btn-info" href="{% url 'update_objetive' target.id %}"><i class="fa-solid fa-pencil"></i> Modificar</a>
+                        </td>
                     </tr>
                 {% endfor %}
 
