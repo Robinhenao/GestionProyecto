@@ -13,7 +13,7 @@ from django.contrib import messages
 
 
 def gestion(request):
-    listado_posts =Proyecto.objects.all()
+    listado_posts =Proyecto.objects.filter(director=request.user.id)
     paginator = Paginator(listado_posts, 6)
     pagina = request.GET.get("page") or 1
     posts = paginator.get_page(pagina)
@@ -47,6 +47,7 @@ def make_project(request):
         form=FormProyecto(request.POST,request.FILES)
         if form.is_valid():
             proyecto= form.save(commit=False)
+            proyecto.director_id=request.user.id
             proyecto.save()
             return redirect("make_objective",proyecto.id)
         else:

@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.base import Model
-
+from django.contrib.auth.models import User
 
 class Proyecto(models.Model):
     estados = (('F','Finalizado'),('E','En ejecucion'))
@@ -8,7 +8,7 @@ class Proyecto(models.Model):
     objetivo_general = models.CharField(max_length=100)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
-    director = models.CharField(max_length=100)
+    director = models.ForeignKey(User, on_delete=models.CASCADE)
     presupuesto = models.CharField(max_length=100)
     porcentaje_avance = models.IntegerField(null = True)
     estado = models.CharField(max_length=1, choices=estados)
