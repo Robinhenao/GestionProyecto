@@ -55,7 +55,7 @@
                         <td>{{ student.fecha_ingreso }}</td>
     
                         <td><a class="link btn btn-sm btn-block btn-info"
-                            href="#"><i class="fa-solid fa-pencil"></i> Modificar</a></td>
+                            href="{% url 'update_student' student.numero_id%}"><i class="fa-solid fa-pencil"></i> Modificar</a></td>
                         <td><a  class="btn btn-sm btn-block btn-danger"
                             href="{% url 'delete_student' student.numero_id%}"><i class="fa-regular fa-trash-can"></i> Eliminar</a></td>
     

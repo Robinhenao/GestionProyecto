@@ -10,8 +10,6 @@ from django.contrib import messages
 
 
 @login_required(login_url='login')
-
-
 def gestion(request):
     listado_posts =Proyecto.objects.filter(director=request.user.id)
     paginator = Paginator(listado_posts, 6)
@@ -121,3 +119,17 @@ def update_project(request,project_id):
 
 
 
+def update_student(request, numero_id):
+    estudiante = Estudiante.objects.get(pk= numero_id)
+    project_id = estudiante.proyecto.id
+    if request.method == "POST":
+        form = FormStudent(request.POST, instance=estudiante)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_students', project_id)
+        else:
+            for msg in form.error_message:
+                messages.error(request, form.error_messages[msg])
+    form=FormStudent(instance=estudiante) 
+    students = Estudiante.objects.filter(proyecto = project_id)
+    return render(request, "manage_students.html", {"form": form,"students":students,'project_id':project_id})
