@@ -14,13 +14,19 @@ def calacular_porcentaje_avance(project_id):
     targets = Objetivos_especificos.objects.filter(proyecto = project_id)
     contador_true = 0
     No_objetivos = 0
+    
     for target in targets:
         No_objetivos = No_objetivos + 1
         if target.estado == True:
             contador_true = contador_true + 1
-    porcentaje = 100 / No_objetivos
-    porcentaje_avance = int(contador_true * porcentaje)
-    return  porcentaje_avance
+    if No_objetivos>0:
+        porcentaje = 100 / No_objetivos
+        porcentaje_avance = int(contador_true * porcentaje)
+        return  porcentaje_avance
+    
+    return 0
+        
+
 
 @login_required(login_url='login')
 def gestion(request):
