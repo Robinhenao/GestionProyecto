@@ -1,8 +1,6 @@
 import re
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from gestion.forms import FormStudent
-from gestion.forms import FormProyecto
 from gestion.forms import FormObjetivosEspecificos
 from gestion.forms import FormProyecto, FormStudent
 from gestion.models import Estudiante, Objetivos_especificos, Proyecto
@@ -105,6 +103,31 @@ def delete_objetivo(request,objetive_id):
     objetivos_especificos.delete()
     print(id_proyecto)
     return redirect("make_objective",id_proyecto)
+
+def delete_proyecto(request,project_id):
+    try:
+        proyecto = Proyecto.objects.get(pk=project_id)
+        
+    except proyecto.DoesNotExist:
+        messages.error(request, "el proyecto a eliminar no existe")
+    
+    proyecto.delete()
+    return redirect("gestion_proyecto")
+
+
+def delete_objetivoAdmin(request,objetive_id):
+    try:
+        objetivos_especificos = Objetivos_especificos.objects.get(pk=objetive_id)
+        
+    except Objetivos_especificos.DoesNotExist:
+        messages.error(request, "el post a eliminar no existe")
+
+
+    id_proyecto =objetivos_especificos.proyecto.id
+    
+    objetivos_especificos.delete()
+    print(id_proyecto)
+    return redirect("admin_project",id_proyecto)
 
 
 def delete_student(request, numero_id):
